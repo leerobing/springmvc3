@@ -58,6 +58,24 @@ class ItemRepositoryTest {
     @Test
     void findAll() {
 
+        //given
+        Item item = new Item();
+        item.setItemName("book");
+        item.setPrice(1000);
+        item.setQuantity(30);
+
+        Item item2 = new Item();
+        item.setItemName("cake");
+        item.setPrice(2000);
+        item.setQuantity(10);
+
+        Item save1 = itemRepository.save(item);
+        Item save2 = itemRepository.save(item2);
+
+        Item byId = itemRepository.findById(save1.getId());
+
+        Assertions.assertThat(byId).isEqualTo(save1);
+
     }
 
     @Test
